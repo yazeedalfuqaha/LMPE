@@ -24,7 +24,7 @@
 
         .img_size{
             width:150px;
-            height:150px;
+            height:100px;
         }
 
         .th_color{
@@ -36,6 +36,7 @@
             padding:30px;
         }
 
+        
 
 
 
@@ -66,7 +67,9 @@
           <th class="th_deg">Category</th>
           <th class="th_deg">Price</th>
           <th class="th_deg">Discount Price</th>
-          <th class="th_deg">image</th>
+          <th class="th_deg">Product image</th>
+          <th class="th_deg">Delete</th>
+          <th class="th_deg">Edit</th>
 
           </tr>
 
@@ -86,6 +89,15 @@
 
           <img src="/product/{{$product->image}}" class="img_size">
           </td>
+
+            <td>
+                <a href="" class="btn btn-danger">Delete</a>
+            </td>
+
+
+            <td>
+                <a href="" class="btn btn-success">Edit</a>
+            </td>
 
           </tr>
 
