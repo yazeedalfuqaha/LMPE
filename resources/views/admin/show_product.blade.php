@@ -55,6 +55,21 @@
         <div class="main-panel">
           <div class="content-wrapper">
 
+
+
+          @if(session()->has('message'))
+
+
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+
+            {{session()->get('message')}}
+
+            </div>
+
+
+            @endif
+
           <h2 class="font_size">All Products</h2>
 
           <table class="center">
@@ -91,12 +106,12 @@
           </td>
 
             <td>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="{{url('delete_product', $product->id)}}" class="btn btn-danger" onclick="return confirm('Are You Sure To Delete This')" >Delete</a>
             </td>
 
 
             <td>
-                <a href="" class="btn btn-success">Edit</a>
+                <a href="{{url('update_product' , $product->id)}}" class="btn btn-success">Edit</a>
             </td>
 
           </tr>

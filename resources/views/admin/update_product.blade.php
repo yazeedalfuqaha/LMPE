@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+
+    <base href="/public">
     @include('admin.css')
 
     <style>
@@ -34,38 +36,36 @@
 
 
         input[type=text], select {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-          
-        }
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
 
-        input[type=submit] {
-          
-          background-color: blue;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
+input[type=submit] {
+  
+  background-color: blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-        input[type=number], select {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-        }
-
-        
+input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 
 
@@ -96,32 +96,28 @@
           <div class="div_center">
 
 
-          <h2 class="h2_font">Add Product</h2>
+          <h2 class="h2_font">Update Product</h2>
 
-          <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+          <form action="{{url('/update_product_confirm' , $product->id)}}" method="POST" enctype="multipart/form-data">
 
           @csrf
 
-
-          <div class="parent">
-
-
           <div class="dev_design">
 
-          <lable> </lable>
-          <input type="text" name="title" class="text_color" placeholder="Product Title" required="">
+           <lable> </lable>
+          <input type="text" name="title" class="text_color" placeholder="Product Title" required="" value="{{$product->title}}">
           </div>
 
           <div class="div_center">
 
             <lable> </lable>
-            <input type="text" name="description" class="text_color" placeholder="Product Description" required="">
+            <input type="text" name="description" class="text_color" placeholder="Product Description" required="" value="{{$product->description}}">
             </div>
 
             <div class="div_center">
 
             <lable></lable>
-            <input type="number" name="price" class="text_color" placeholder="Product Price" required="">
+            <input type="number" name="price" class="text_color" placeholder="Product Price" required="" value="{{$product->price}}">
             </div>
 
            
@@ -129,43 +125,50 @@
             <div class="div_center">
 
             <lable> </lable>
-            <input type="number" name="dis_price" class="text_color" placeholder=" Discount_Price" >
+            <input type="number" name="dis_price" class="text_color" placeholder=" Discount_Price" value="{{$product->discount_price}}">
             </div>
 
             <div class="div_center">
 
             <lable></lable>
-            <input type="number" name="quantity" class="text_color" placeholder="Write a quantity" min="0" required="">
+            <input type="number" name="quantity" class="text_color" placeholder="Write a quantity" min="0" required="" value="{{$product->quantity}}">
             </div>
 
            
             <div class="div_center">
             <lable> </lable>
-            <select class="text_color" name="category" required="">
-              
-                <option value="" selected="">Add Category</option>
+            <select class="text_color" name="category" required="" >
+
+                <option selected="" value="{{$product->category}}">{{$product->category}}</option>
 
                 @foreach($category as $category )
                 <option value="{{$category->category_name}}">{{$category->category_name}}</option>
                 @endforeach
+
             </select>
             </div>
 
             <div class="div_center">
 
-            <lable>Product Image: </lable>
-            <input type="file" name="image" required="">
+            <lable>Current Product Image: </lable>
+            <img src="/product/{{$product->image}}" alt="image" style="margin:auto;  width:100px;">
+
+            </div>
+
+
+
+            <div class="div_center">
+
+            <lable>Change Product Image: </lable>
+            <input type="file" name="image" >
             </div>
 
             <div class="div_center">
 
            
-            <input type="submit" value="Add Product"  class="subbutto">
+            <input type="submit" value="Update Product"  class="subbutto">
 
             </div>
-
-            </div>
-            
 
             </form>
 
@@ -175,9 +178,6 @@
 
 
           </div>
-
-
-         
 
 
             </div>

@@ -30,7 +30,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
+//admin controller function
 route::get('/redirect' , [HomeController::class,'redirect']);
 
 route::get('/view_category' , [AdminController::class,'view_category']);
@@ -43,5 +43,12 @@ route::get('/view_product' , [AdminController::class,'view_product'])->name('vie
 
 route::post('/add_product' , [AdminController::class,'add_product'])->name('add_product');
 
-
 route::get('/show_product' , [AdminController::class,'show_product'])->name('show_product');
+
+route::get('/delete_product/{id}' , [AdminController::class,'delete_product'])->name('delete_product');
+
+route::get('/update_product/{id}' , [AdminController::class,'update_product'])->name('update_product');
+
+route::post('/update_product_confirm/{id}' , [AdminController::class,'update_product_confirm'])->name('update_product_confirm');
+
+route::get('/product_details/{id}' , [HomeController::class,'product_details'])->name('product_details');

@@ -6,12 +6,16 @@
                </h2>
             </div>
             <div class="row">
+
+
+            @foreach($product as $products)
+            
                <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
-                           Add To Cart
+                           <a href="{{url('product_details',$products->id )}}" class="option1">
+                           Product Details
                            </a>
                            <a href="" class="option2">
                            Buy Now
@@ -19,19 +23,51 @@
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="home/images/wrist2-removebg-preview.png" alt="">
+                        <img src="product/{{$products->image}}" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                          Gold Bracelet
+                          {{$products->title}}
                         </h5>
-                        <h6>
-                           $260
+
+
+                        @if($products->discount_price!==null)
+                        <h6 style="color:red;">
+                       
+                        ${{$products->discount_price}}
                         </h6>
+
+                        <h6 style="text-decoration: line-through;">
+                        
+                        ${{$products->price}}
+                        </h6>
+
+                        @else
+
+                        
+                        <h6>
+                        
+                        ${{$products->price}}
+                        </h6>
+
+                        @endif
+
+
+
+                       
+
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
+
+               @endforeach
+
+               <span style="padding-top:20px; margin-left:22px;">
+
+               {!!$product->withQueryString()->links('pagination::bootstrap-5')!!}
+
+               </span>
+               <!-- <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -155,7 +191,7 @@
                         </h6>
                      </div>
                   </div>
-               </div>
+               </div> -->
                <!-- <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
